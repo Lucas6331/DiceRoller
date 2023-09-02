@@ -7,18 +7,21 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+
+
+		toRoll.Clicked += (s, e) => DiceRoller();
+
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
+    void DiceRoller()
 	{
-		count++;
+        int chosenOption = DicePicker.SelectedIndex;
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+        var rnd = new Random();
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+		int seila = rnd.Next(1, chosenOption);
+
+		rolledNumber.Text = seila.ToString();
+    }
 }
 
